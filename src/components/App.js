@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import './App.css';
-import NameForm from './nameForm/NameForm.js';
+import '../App.css';
+import NameForm from './NameForm.js';
 
 function App() {
   return (
