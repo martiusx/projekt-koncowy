@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TaskSelect from "./TaskSelect";
 
 
 export default function NameForm(){
@@ -25,7 +26,11 @@ export default function NameForm(){
         )
     }else{
         return(
-            <h1>WITAJ {savedName}</h1>
+        <>  
+          <h1>WITAJ {savedName}</h1>
+            <TaskSelect></TaskSelect>  
+        </>
+
         )
     }
 }
