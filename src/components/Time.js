@@ -23,14 +23,14 @@ const Time = (props)=>{
   const month = time.getMonth();
   const day = time.getDate();
   const hours = time.getHours();
-  const minuets = time.getMinutes();
+  const minutes = time.getMinutes();
   const seconds = time.getSeconds();
 
 
 
   return(
     <div>
-        <p>{`Local time is ${year}-${month}-${day} ${hours}:${minuts}:${seconds}`} </p>
+        <p>{`Local time is ${year}-${month}-${day} ${hours}:${minutes}:${seconds}`} </p>
     </div>
   )
 }

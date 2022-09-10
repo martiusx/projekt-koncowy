@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API } from "./UserManager";
 
-function AddUser({ refreshList }) {
+function AddUser({ refreshList, props }) {
   const [user, setUser] = useState({
     name: "",
     time: {
@@ -36,7 +36,7 @@ function AddUser({ refreshList }) {
   let timeActual= `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
 
-  const addUser = (e) => {
+  const addUser = (e, props) => {
     e.preventDefault();
     fetch(API, {
       method: "POST",
@@ -53,6 +53,7 @@ function AddUser({ refreshList }) {
       .catch((error) => {
         console.log(error);
       });
+
   };
 
 
@@ -69,14 +70,15 @@ function AddUser({ refreshList }) {
           })
         }
       />
-      <button onClick={(e) =>
+      <button onClick={(e) =>{
       setUser({
         ...user,
         time:{
           ...user.time,
           start: timeActual,
         }
-      })}>Save</button>
+      })
+      }}>Save</button>
     </form>
     </>
 

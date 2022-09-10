@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, ListGroupItem, Container, Row, Col, Button } from 'react-bootstrap';
+import { Card, ListGroupItem, Container, Row, Col, Button, CloseButton } from 'react-bootstrap';
 import {API} from "./UserManager";
 
 
@@ -22,10 +22,14 @@ function EditUser({ userToEdit, onEditUser }) {
   )
 
   const year = time.getFullYear();
-  const minuts = time.getMinutes();
+  const month = time.getMonth();
+  const day = time.getDate();
+  const hours = time.getHours();
+  const minutes = time.getMinutes();
   const seconds = time.getSeconds();
 
-let timeActual= `${year} ${minuts} ${seconds}`;
+
+let timeActual= `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
   const editUser = (e) => {
     e.preventDefault();
@@ -73,28 +77,22 @@ let timeActual= `${year} ${minuts} ${seconds}`;
       />
       <button
           value={'STOP'}
-          onClick={(e) =>
+          onClick={(e) =>{
+          let reg = /\d+/g;
+          let timeStart = user.time.start.match(reg);
+          console.log(timeStart);
+
           setUser({
             ...user,
             time: {
               ...user.time,
-              stop: timeActual,
+              stop: year + '-' + month +'-'+ day +" "+ hours +':'+ minutes +":"+ seconds,
+              direction: (year - timeStart[0]) + '-' + (month - timeStart[1]) +'-'+ (day - timeStart[2]) +" "+ (hours - timeStart[3]) +':'+ (minutes - timeStart[4]),
             },
           })
-        }
+        }}
       >STOP</button>
-      <button
-        onClick={(e) =>
-          setUser({
-            ...user,
-            time: {
-              ...user.time,
-              direction:user.time.start,
-            },
-          })
-        }
-      />
-      <button>Zapisz</button>
+      <button>Save</button>
     </form>
   );
 }
@@ -122,24 +120,25 @@ function User({ user, setUser, refreshList }) {
   }
   return (
     <>
-    <ListGroupItem as='li' className="border d-flex align-items-center justify-content-center">
-      <Card style={{color:"black", width: "40vw"}}>
-        <Card.Body style={{textAlign: "center"}}>
-          <Card.Title className="border d-flex align-items-center justify-content-center" style={{background:"#7D29DF", color:"#CAA8F3", height: 200}}>{user.name} </Card.Title>
-          <Card.Text>
-          <Card.Subtitle className="mb-2 text-muted">Czas rozpoczęcia zadania</Card.Subtitle>
+      <Card style={{ width: '30rem', background:"#031956", color:'white', borderRadius: 30, marginTop:30, padding: "30px 25px", fontSize:'1.5rem'}}>
+      <Card.Body>
+        <Card.Title>{user.name}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">Czas rozpoczęcia zadania</Card.Subtitle>
+        <Card.Text>
           {user.time.start}
-          <Card.Subtitle className="mb-2 text-muted">Czas zakończenia zadania</Card.Subtitle>
+        </Card.Text>
+        <Card.Subtitle className="mb-2 text-muted">Czas zakończenia zadania</Card.Subtitle>
+        <Card.Text>
           {user.time.stop}
-          <Card.Subtitle className="mb-2 text-muted">Czas trwania zadania</Card.Subtitle>
-          {user.time.start - user.time.stop}
-          </Card.Text>
-      
-      <Button variant="outline-dark" style={{background:"#7D29DF", marginRight: 10}} onClick={() => deleteUser(user.id)}>delete</Button>
-      <Button variant="outline-dark" style={{background:"#7D29DF"}} onClick={() => setIsEditable(true)}>edit</Button>
+        </Card.Text>
+        <Card.Subtitle className="mb-2 text-muted">Czas trwania zadania</Card.Subtitle>
+        <Card.Text>
+          {user.time.direction}
+        </Card.Text>
+        <CloseButton aria-label="Hide"  style={{marginRight: 10 ,backgroundColor: '#EB05FF', fontSize:'1.5rem'}} onClick={() => deleteUser(user.id)}></CloseButton>
+        <Button className=" d-flex align-items-center justify-content-center" variant="outline-dark" style={{background:"#EB05FF", border: 'none', marginTop:'2rem'}} onClick={() => setIsEditable(true)}>edit</Button>
       </Card.Body>
-      </Card>
-    </ListGroupItem>
+    </Card>
     </>
   );
 }
