@@ -1,16 +1,15 @@
+
 import React from "react";
-import ReactDOM from "react-dom";
+import UserManager from "./UserManager";
 import '../App.css';
-import NameForm from './NameForm.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <NameForm></NameForm>  
-</header>
+    <div style={{background: "#F2F2F2", width: "100vw", minHeight:"100vh"}}>
+          <UserManager></UserManager>
     </div>
-  );
+);
+
 }
 
 export default App;
