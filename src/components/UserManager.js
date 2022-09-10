@@ -35,7 +35,7 @@ export default function UserManager(props) {
             {
           showAdd?<Button 
           variant="outline-dark" 
-          style={{background:"#0769FF"}} 
+          style={{background:"#EB05FF", margin:'2rem'}} 
           onClick={()=>setShowAdd(false)}>Choose</Button>:<CloseButton 
           aria-label="Hide"  
           style={{marginRight: 10 ,backgroundColor: '#EB05FF', transform: 'rotate(45deg)', margin:'2rem', fontSize:'2rem'}} 

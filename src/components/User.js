@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, ListGroupItem, Container, Row, Col, Button, CloseButton } from 'react-bootstrap';
+import { Card,Button, CloseButton } from 'react-bootstrap';
 import {API} from "./UserManager";
 
 
@@ -28,8 +28,6 @@ function EditUser({ userToEdit, onEditUser }) {
   const minutes = time.getMinutes();
   const seconds = time.getSeconds();
 
-
-let timeActual= `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
   const editUser = (e) => {
     e.preventDefault();
@@ -92,7 +90,7 @@ let timeActual= `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
           })
         }}
       >STOP</button>
-      <button>Save</button>
+
     </form>
   );
 }
@@ -123,15 +121,15 @@ function User({ user, setUser, refreshList }) {
       <Card style={{ width: '30rem', background:"#031956", color:'white', borderRadius: 30, marginTop:30, padding: "30px 25px", fontSize:'1.5rem'}}>
       <Card.Body>
         <Card.Title>{user.name}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Czas rozpoczęcia zadania</Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">Task start time</Card.Subtitle>
         <Card.Text>
           {user.time.start}
         </Card.Text>
-        <Card.Subtitle className="mb-2 text-muted">Czas zakończenia zadania</Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">Time to complete the task</Card.Subtitle>
         <Card.Text>
           {user.time.stop}
         </Card.Text>
-        <Card.Subtitle className="mb-2 text-muted">Czas trwania zadania</Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">Duration of the task</Card.Subtitle>
         <Card.Text>
           {user.time.direction}
         </Card.Text>

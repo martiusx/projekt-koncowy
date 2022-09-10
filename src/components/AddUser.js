@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API } from "./UserManager";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 
 function AddUser({ refreshList, props }) {
   const [user, setUser] = useState({
@@ -59,7 +61,7 @@ function AddUser({ refreshList, props }) {
 
   return (
     <>    
-    <form onSubmit={addUser}>
+    <form style={{marginBottom:'2.5rem'}} onSubmit={addUser} >
       <input
         type="text"
         value={user.name}
@@ -70,7 +72,7 @@ function AddUser({ refreshList, props }) {
           })
         }
       />
-      <button onClick={(e) =>{
+      <button style={{background:"#EB05FF", border: 'none', marginLeft:'2rem', padding:'.3rem .7rem',borderRadius:'5px'}} onClick={(e) =>{
       setUser({
         ...user,
         time:{

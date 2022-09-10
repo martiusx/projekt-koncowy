@@ -1,31 +1,13 @@
 {
   "posts": [
     {
-      "name": "Project 1",
+      "name": "Projekt1",
       "time": {
-        "start": "2022-8-10 7:47:50",
-        "stop": "2022 36 53",
-        "direction": 0
+        "start": "2022-8-10 17:39:16",
+        "stop": "2022-8-10 17:56:11",
+        "direction": "0-0-0 0:17"
       },
       "id": 1
-    },
-    {
-      "name": "Project 2",
-      "time": {
-        "start": "2022-8-10 7:47:52",
-        "stop": 0,
-        "direction": 0
-      },
-      "id": 2
-    },
-    {
-      "name": "Project 3",
-      "time": {
-        "start": "2022-8-10 7:47:53",
-        "stop": 0,
-        "direction": 0
-      },
-      "id": 3
     }
   ]
 }
